@@ -19,7 +19,7 @@ define(function () {
   }
 
   function traverse(parentNode) {
-    var treeWalker = document.createTreeWalker(parentNode, NodeFilter.SHOW_ELEMENT);
+    var treeWalker = document.createTreeWalker(parentNode, NodeFilter.SHOW_ELEMENT, null, false);
     var node = treeWalker.firstChild();
 
     while (node) {
