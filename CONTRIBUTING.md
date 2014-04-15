@@ -9,8 +9,24 @@
 ```
 ./setup.sh
 node test/server
-java -jar vendor/selenium-server-standalone-2.37.0.jar
 BROWSER_NAME='chrome' node test/runner.js
+```
+
+## Testing via Sauce Labs
+You will need to [download Sauce Connect](https://saucelabs.com/docs/connect).
+
+TODO: Add steps for downloading Sauce Connect, i.e. https://github.com/angular/angular.js/blob/master/lib/sauce/sauce_connect_setup.sh
+```
+./setup.sh
+node test/server
+SAUCE_USERNAME='scribe-ci' SAUCE_ACCESS_KEY='4be9eeed-61de-4948-b18d-f7f655e9e4b0'
+
+# Sauce Connect v3
+java -jar ~/Downloads/Sauce-Connect-latest/Sauce-Connect.jar $SAUCE_USERNAME $SAUCE_ACCESS_KEY
+# Sauce Connect v4
+~/Downloads/sc-4.1-osx/bin/sc -u $SAUCE_USERNAME -k $SAUCE_ACCESS_KEY
+
+RUN_IN_SAUCE_LABS=true BROWSER_NAME='chrome' BROWSER_VERSION='32' PLATFORM='WINDOWS' npm test
 ```
 
 ## Releasing
